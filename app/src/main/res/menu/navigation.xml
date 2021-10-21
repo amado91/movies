@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_trending"
+        android:icon="@drawable/ic_trending_up"
+        android:title="Tendencia"/>
+
+    <item
+        android:id="@+id/navigation_popular"
+        android:icon="@drawable/ic_tv"
+        android:title="Mas visto"/>
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_"
+        android:title="Artists"/>
+
+</menu>
