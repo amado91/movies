@@ -2,6 +2,7 @@ package com.example.gapsi.service
 
 import com.example.gapsi.service.`interface`.WebService
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,18 +29,22 @@ object RetrofitClient {
 //        })
 //    }.build()
 
+    private val interceptor : HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
+        this.level = HttpLoggingInterceptor.Level.BODY
+    }
 
 
     private val clientToken = OkHttpClient
         .Builder()
         .addInterceptor(WSretrofit())
+        .addInterceptor(interceptor)
         .build()
 
     private val retrofitCatalog = Retrofit.Builder()
         .baseUrl(BASER_URL_CATALG)
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
-        //.client(clientToken)
+        .client(clientToken)
         .build()
         .create(WebService::class.java)
 

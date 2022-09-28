@@ -18,6 +18,8 @@ import com.example.gapsi.model.response.Results
 import com.example.gapsi.model.response.ResultsRealm
 import com.example.gapsi.presenter.ConsultProductPresenter
 import com.example.gapsi.presenter.ConsultProductPresenterImpl
+import com.example.gapsi.service.RetrofitClient
+import com.example.gapsi.service.WSretrofit
 import com.example.gapsi.view.ConsultView
 import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
@@ -45,6 +47,7 @@ class MainActivity : AppCompatActivity(), ConsultView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        WSretrofit.setContext(this)
         realm = Realm.getDefaultInstance()
         realm.beginTransaction()
         realm.deleteAll()
